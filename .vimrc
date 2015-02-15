@@ -93,5 +93,5 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 set rtp+=~/.fzf
-map <C-f> :FZF<CR>
+map <C-p> :FZF<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
