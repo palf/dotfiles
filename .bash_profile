@@ -14,13 +14,14 @@ defaultGrey="\[\033[0;37m\]"
 darkRed="\[\033[0;31m\]"
 green="\[\033[0;32m\]"
 
-export PS1="\n$lightBlue\h: $white\w\n$darkRed\$(parse_git_branch)$green>$defaultGrey "
-
 ANDROID_PATH=$HOME/Development/android-sdk-macosx
 NODE_PATH=/usr/local/lib/node_modules/grunt
 CABAL_PATH=~/.cabal/bin
 
-export PATH=$ANDROID_PATH/platform-tools:$ANDROID_PATH/tools:$NODE_PATH:$CABAL_PATH:$PDDL_PATH:$PATH
-export PDDL_PATH
+export PATH=$ANDROID_PATH/platform-tools:$ANDROID_PATH/tools:$NODE_PATH:$CABAL_PATH:$PATH
 export MACOSX_DEPLOYMENT_TARGET=10.9
+export TERM=xterm-color
+export PS1="\n$lightBlue\h: $white\w\n$darkRed\$(parse_git_branch)$green>$defaultGrey "
+
+alias ls="ls -alG"
 
