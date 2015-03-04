@@ -64,7 +64,6 @@ map <F3> :colorscheme solarized<CR>:set background=dark<CR>
 syntax enable
 filetype plugin indent on
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeChDirMode=0
