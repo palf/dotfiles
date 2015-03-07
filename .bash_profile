@@ -21,7 +21,6 @@ CABAL_PATH=~/.cabal/bin
 
 export PATH=$SCRIPTS_PATH:$ANDROID_PATH/platform-tools:$ANDROID_PATH/tools:$NODE_PATH:$CABAL_PATH:$PATH
 export MACOSX_DEPLOYMENT_TARGET=10.9
-export TERM=xterm-color
 export PS1="\n$lightBlue\h: $white\w\n$darkRed\$(parse_git_branch)$green>$defaultGrey "
 
 alias ls="ls -alG"
