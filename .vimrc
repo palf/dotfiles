@@ -62,6 +62,7 @@ map <F2> :colorscheme solarized<CR>:set background=light<CR>
 map <F3> :colorscheme solarized<CR>:set background=dark<CR>
 
 syntax enable
+syntax on
 filetype plugin indent on
 autocmd StdinReadPre * let s:std_in=1
 
@@ -90,7 +91,21 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
 
 set rtp+=~/.fzf
 map <C-p> :FZF<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+set ts=2
+set sw=2
+set expandtab
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype ruby setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+autocmd FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+
+let g:mustache_abbreviations = 1
+let g:hdevtools_options = '-g-isrc -g-Wall'
+
