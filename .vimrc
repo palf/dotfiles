@@ -32,10 +32,11 @@ set noerrorbells
 set nobackup
 set noswapfile
 
-let g:airline_theme='murmur'
+let g:airline_theme='pencil'
 let g:airline_powerline_fonts = 1
 set background=dark
-colorscheme solarized
+colorscheme pencil
+let g:pencil_higher_contrast_ui = 1   " 0=low (def), 1=high
 
 set laststatus=2
 set noshowmode
@@ -107,5 +108,5 @@ autocmd FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 autocmd FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 
 let g:mustache_abbreviations = 1
-let g:hdevtools_options = '-g-isrc -g-Wall'
+let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
 
