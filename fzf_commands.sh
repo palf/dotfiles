@@ -1,3 +1,5 @@
+#/usr/bin/env bash
+
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 fe() {
