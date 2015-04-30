@@ -1,12 +1,7 @@
 [user]
 [push]
-	default = matching
+  default = matching
 [alias]
-	st = status
-	ci = commit
-	br = branch
-	co = checkout
-	df = diff
-	dc = diff --cached
-	lg = log -p
-	who = shortlog -s --
+  graph = log --graph --abbrev-commit --oneline
+  amend = commit --amend --no-edit
+  who = shortlog -s --
