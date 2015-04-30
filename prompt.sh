@@ -16,5 +16,5 @@ purple="\e[35m"
 cyan="\e[36m"
 white="\e[37m"
 
-export PS1="\n$intense$blue\h: $white\w\n$purple\$(parse_git_branch)$clear$white$ "
+export PS1="\n$intense$blue\h: $white\w\n$purple\$(parse_git_branch)$clear$white\]λ "
 
