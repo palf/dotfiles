@@ -4,6 +4,7 @@
 [push]
   default = matching
 [alias]
+  co = checkout
   graph = log --graph --abbrev-commit --oneline
   amend = commit --amend --no-edit
   who = shortlog -s --
