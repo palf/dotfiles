@@ -1,10 +1,13 @@
 [user]
-  email = jack.palf@gmail.com
-  name = Jack Palfrey
 [push]
   default = matching
 [alias]
   co = checkout
+  br = branch
+  ci = commit
+  st = status
+  who = shortlog -s --
+  last = log -1 HEAD
+  unstage = reset HEAD --
   graph = log --graph --abbrev-commit --oneline
   amend = commit --amend --no-edit
-  who = shortlog -s --
