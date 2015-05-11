@@ -4,25 +4,24 @@ parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
-reset="\e[\033[1;0m\]\]"
-clear="\e[0m\]"
-intense="\e[1m\]"
+clear="\[\e[0m\]"
+intense="\[\e[0m\]"
 
-black="\e[30m\]"
-red="\e[31m\]"
-green="\e[32m\]"
-yellow="\e[33m\]"
-blue="\e[34m\]"
-purple="\e[35m\]"
-cyan="\e[36m\]"
-white="\e[37m\]"
+black="\[\e[30m\]"
+red="\[\e[31m\]"
+green="\[\e[32m\]"
+yellow="\[\e[33m\]"
+blue="\[\e[34m\]"
+purple="\[\e[35m\]"
+cyan="\[\e[36m\]"
+white="\[\e[37m\]"
 
 user_host="$intense$blue\h"
 current_folder="$intense$red\w"
 git_branch="$intense$purple\$(parse_git_branch)"
 
 wrap() {
-  echo "$1$reset "
+  echo "$1$clear"
 }
 
 lines=()
@@ -34,7 +33,7 @@ function join { local IFS="$1"; shift; echo "$*"; }
 
 headline="$(join \| ${lines[@]})"
 
-export PS1="
+export PS1="$clear
 $headline
-λ$reset "
+λ$clear "
 
