@@ -9,6 +9,7 @@ alias gl="git log"
 alias gg="git graph"
 
 alias ls="ls -alG"
+alias hist="history"
 
 alias be="bundle exec"
 
