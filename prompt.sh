@@ -35,5 +35,5 @@ headline="$(join \| ${lines[@]})"
 
 export PS1="$clear
 $headline
-λ$clear "
+$red\!$purple λ$clear "
 
