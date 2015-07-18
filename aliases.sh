@@ -10,6 +10,7 @@ alias gg="git graph"
 
 alias ls="ls -alG"
 alias hist="history"
+alias tree="tree -C"
 
 alias be="bundle exec"
 
