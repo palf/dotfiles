@@ -109,4 +109,6 @@ autocmd FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 
 let g:mustache_abbreviations = 1
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
+let g:syntastic_javascript_checkers = ['jshint', 'eslint']
+let g:jsx_ext_required = 1
 

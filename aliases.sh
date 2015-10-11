@@ -14,3 +14,7 @@ alias tree="tree -C"
 
 alias be="bundle exec"
 
+alias serve="python -m SimpleHTTPServer"
+
+alias uh="hist | sed -e 's/.*\([0-9]\{2\}:[0-9]\{2\}\) \{1,2\}\(.*\)/\2/' | sort | uniq"
+

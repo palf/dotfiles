@@ -22,7 +22,7 @@ git_branch="$red\$(parse_git_branch)"
 
 time="$black\D{%T}"
 history="$red\!"
-symbol="${blue}λ"
+symbol="🍺${blue}λ"
 
 headline="$host $current_folder $git_branch"
 baseline="$time $history $symbol"
