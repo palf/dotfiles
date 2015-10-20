@@ -67,15 +67,6 @@ syntax on
 filetype plugin indent on
 autocmd StdinReadPre * let s:std_in=1
 
-map <C-n> :NERDTreeToggle<CR>
-let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=0
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
-let NERDTreeKeepTreeInNewTab=1
-let g:nerdtree_tabs_open_on_gui_startup=0
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -96,6 +87,8 @@ let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
 
 set rtp+=~/.fzf
 map <C-p> :FZF<CR>
+map <leader>f :FZF<CR>
+map <leader>r :MRU<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 set ts=2
