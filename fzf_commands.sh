@@ -21,6 +21,10 @@ fh() {
   eval $(([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s | sed 's/ *[0-9]* *//')
 }
 
+ufh() {
+  eval $(history | tr -s ' ' | cut -d ' ' -f 3- | sort -u | fzf -x +s)
+}
+
 # fkill - kill process
 fkill() {
   ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
