@@ -16,13 +16,14 @@ fd() {
     cd "$dir"
 }
 
-# fh - repeat history
+# fh - search history
 fh() {
-  eval $(([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s | sed 's/ *[0-9]* *//')
+  ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s -m -x --reverse
 }
 
-ufh() {
-  eval $(history | tr -s ' ' | cut -d ' ' -f 3- | sort -u | fzf -x +s)
+# xfh - repeat history
+xfh() {
+  eval $(([ -n "$ZSH_NAME" ] && fc -l 1 || history) | tr -s ' ' | cut -d ' ' -f 3- | sort -u | fzf -x +s)
 }
 
 # fkill - kill process
