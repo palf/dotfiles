@@ -59,8 +59,6 @@ map <right> <nop>
 nmap <Tab> :b#<CR>
 nmap <leader>w :w!<cr>
 nmap <leader>q :q<CR>
-map <F2> :colorscheme solarized<CR>:set background=light<CR>
-map <F3> :colorscheme solarized<CR>:set background=dark<CR>
 
 syntax enable
 syntax on
@@ -104,4 +102,12 @@ let g:mustache_abbreviations = 1
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
 let g:syntastic_javascript_checkers = ['jshint', 'eslint']
 let g:jsx_ext_required = 1
+
+set colorcolumn=140
+set foldmethod=syntax
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
 
