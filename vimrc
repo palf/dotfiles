@@ -61,13 +61,8 @@ nmap <leader>w :w!<cr>
 nmap <leader>q :q<CR>
 
 syntax enable
-syntax on
 filetype plugin indent on
 autocmd StdinReadPre * let s:std_in=1
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_highlight_lines = 0
@@ -79,7 +74,7 @@ highlight GitGutterChangeDelete guibg=yellow
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
 
@@ -87,6 +82,7 @@ set rtp+=~/.fzf
 map <C-p> :FZF<CR>
 map <leader>f :FZF<CR>
 map <leader>r :MRU<CR>
+map <leader>l :Limelight!!<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 set ts=2
@@ -95,13 +91,10 @@ set expandtab
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
-autocmd FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-autocmd FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 
 let g:mustache_abbreviations = 1
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
 let g:syntastic_javascript_checkers = ['jshint', 'eslint']
-let g:jsx_ext_required = 1
 
 set colorcolumn=140
 set foldmethod=syntax
