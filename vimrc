@@ -104,3 +104,4 @@ autocmd BufWinEnter *.* silent loadview
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
+set cursorline
