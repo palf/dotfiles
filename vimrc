@@ -22,6 +22,7 @@ set smartcase
 set smarttab
 set incsearch
 set hlsearch
+set cursorline
 
 set history=1000
 set undolevels=1000
@@ -32,16 +33,15 @@ set noerrorbells
 set nobackup
 set noswapfile
 
-let g:airline_theme='pencil'
+let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts = 1
 set background=dark
-colorscheme pencil
-let g:pencil_higher_contrast_ui = 1   " 0=low (def), 1=high
+colorscheme jellybeans
 
 set laststatus=2
 set noshowmode
 set list
-set listchars=trail:·,precedes:«,extends:»,tab:▸·
+set listchars=trail:·,precedes:«,extends:»,tab:\|\ 
 set pastetoggle=<F12>
 
 nnoremap ; :
