@@ -4,8 +4,6 @@ execute pathogen#infect()
 call pathogen#helptags()
 
 let mapleader=","
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 set hidden
 set nowrap
@@ -56,7 +54,23 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
-nmap <Tab> :b#<CR>
+nnoremap th :tabfirst<CR>
+nnoremap tj :tabprev<CR>
+nnoremap tk :tabnext<CR>
+nnoremap tl :tablast<CR>
+nnoremap tt :tabnew<CR>
+nnoremap te :tabedit<Space>
+nnoremap tm :tabmove<Space>
+nnoremap tq :tabclose<CR>
+
+nmap <Tab> :bnext<CR>
+nmap <S-Tab> :bprev<CR>
+
+" centering search results
+set scrolloff=5
+nnoremap n nzz
+nnoremap N Nzz
+
 nmap <leader>w :w!<cr>
 nmap <leader>q :q<CR>
 
@@ -88,9 +102,9 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 set ts=2
 set sw=2
 set expandtab
-autocmd Filetype html setlocal ts=2 sw=2 expandtab
-autocmd Filetype ruby setlocal ts=2 sw=2 sts=2 expandtab
-autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype html setlocal ts=2 sw=2 noexpandtab
+autocmd Filetype ruby setlocal ts=2 sw=2 sts=2 noexpandtab
+autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 noexpandtab
 
 let g:mustache_abbreviations = 1
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
@@ -105,3 +119,5 @@ nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
 set cursorline
+
+let g:airline_extensions = ['branch', 'tabline', 'tmuxline']
