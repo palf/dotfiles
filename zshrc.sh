@@ -1,11 +1,11 @@
 export ZSH=/Users/palf/.oh-my-zsh
 
-ZSH_THEME="avit"
+ZSH_THEME="af-magic"
 
 DISABLE_AUTO_TITLE="true"
 HIST_STAMPS="mm/dd/yyyy"
 
-plugins=(git tmux cabal lein themes)
+plugins=(git tmux cabal lein themes fzf)
 
 ANDROID_PATHS="/Users/palf/Development/android-sdk-macosx/platform-tools:/Users/palf/Development/android-sdk-macosx/tools"
 
@@ -28,3 +28,4 @@ export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+export EDITOR=vim
