@@ -91,7 +91,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
 
-set rtp+=~/.fzf
+set rtp+=/usr/local/opt/fzf
 map <C-p> :FZF<CR>
 map <leader>f :FZF<CR>
 map <leader>r :MRU<CR>
