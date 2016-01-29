@@ -31,7 +31,6 @@ set noerrorbells
 set nobackup
 set noswapfile
 
-let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts = 1
 set background=dark
 colorscheme jellybeans
@@ -106,9 +105,11 @@ autocmd Filetype html setlocal ts=2 sw=2 noexpandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 sts=2 noexpandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 noexpandtab
 
+let g:jsx_ext_required = 0
 let g:mustache_abbreviations = 1
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
-let g:syntastic_javascript_checkers = ['jshint', 'eslint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:airline_extensions = ['branch', 'tabline', 'tmuxline']
 
 set colorcolumn=140
 set foldmethod=syntax
@@ -118,6 +119,3 @@ autocmd BufWinEnter *.* silent loadview
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
-set cursorline
-
-let g:airline_extensions = ['branch', 'tabline', 'tmuxline']
