@@ -105,7 +105,6 @@ autocmd Filetype html setlocal ts=2 sw=2 noexpandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 sts=2 noexpandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 noexpandtab
 
-let g:jsx_ext_required = 0
 let g:mustache_abbreviations = 1
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
 let g:syntastic_javascript_checkers = ['eslint']
