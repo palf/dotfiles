@@ -8,7 +8,7 @@ alias gds="git diff --staged"
 alias gl="git log"
 alias gg="git graph"
 
-alias ls="ls -alG"
+alias ls="ls -alGh"
 
 alias tree="tree -C"
 alias t2="tree -L 2"
