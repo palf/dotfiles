@@ -112,9 +112,8 @@ let g:airline_extensions = ['branch', 'tabline', 'tmuxline']
 
 set colorcolumn=140
 set foldmethod=syntax
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
 
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
+autocmd BufWinEnter *.* normal zR
