@@ -116,4 +116,4 @@ set foldmethod=syntax
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
-autocmd BufWinEnter *.* normal zR
+hi! link Folded Ignore
