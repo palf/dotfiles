@@ -1,5 +1,3 @@
-#/usr/bin/env bash
-
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
@@ -14,4 +12,3 @@ alias ls="ls -alGh"
 alias tree="tree -C"
 alias be="bundle exec"
 alias serve="python -m SimpleHTTPServer"
-
