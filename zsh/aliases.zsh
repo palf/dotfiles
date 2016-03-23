@@ -8,7 +8,8 @@ alias gg="git graph"
 alias gb="git branch"
 alias gbr="git branch --remote"
 
-alias ls="ls -alGh"
+alias ls='ls -GFh --color'
+alias ll='ls -GFhl --color'
 alias tree="tree -C"
 alias be="bundle exec"
 alias serve="python -m SimpleHTTPServer"

@@ -2,33 +2,33 @@ export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 # fh - search history
 fh() {
-  ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s -m -x --reverse
+	([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s -m -x --reverse
 }
 
 # xfh - repeat history
 xfh() {
-  eval $(([ -n "$ZSH_NAME" ] && fc -l 1 || history) | tr -s ' ' | cut -d ' ' -f 3- | sort -u | fzf -x +s)
+	eval $(([ -n "$ZSH_NAME" ] && fc -l 1 || history) | tr -s ' ' | cut -d ' ' -f 3- | sort -u | fzf -x +s)
 }
 
 # fkill - kill process
 fkill() {
-  ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
+	ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
 }
 
 # fbr - checkout git branch
 fbr() {
-  local branches branch
-    branches=$(git branch) &&
-    branch=$(echo "$branches" | fzf +s +m) &&
-    git checkout $(echo "$branch" | sed "s/.* //")
+	local branches branch
+	branches=$(git branch) &&
+		branch=$(echo "$branches" | fzf +s +m) &&
+		git checkout $(echo "$branch" | sed "s/.* //")
 }
 
 # fco - checkout git commit
 fco() {
-  local commits commit
-    commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
-    commit=$(echo "$commits" | fzf +s +m -e) &&
-    git checkout $(echo "$commit" | sed "s/ .*//")
+	local commits commit
+	commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
+		commit=$(echo "$commits" | fzf +s +m -e) &&
+		git checkout $(echo "$commit" | sed "s/ .*//")
 }
 
 fshow() {
