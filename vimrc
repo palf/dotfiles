@@ -107,6 +107,7 @@ let g:mustache_abbreviations = 1
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:airline_extensions = ['branch', 'tabline', 'tmuxline']
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 set colorcolumn=140
 set foldmethod=syntax
