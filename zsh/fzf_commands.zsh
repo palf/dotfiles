@@ -1,20 +1,4 @@
-#/usr/bin/env bash
-
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
-
-fe() {
-  local file
-    file=$(fzf --query="$1" --select-1 --exit-0)
-    [ -n "$file" ] && ${EDITOR:-vim} "$file"
-}
-
-# fd - cd to selected directory
-fd() {
-  local dir
-    dir=$(find ${1:-*} -path '*/\.*' -prune \
-        -o -type d -print 2> /dev/null | fzf +m) &&
-    cd "$dir"
-}
 
 # fh - search history
 fh() {
@@ -29,12 +13,6 @@ xfh() {
 # fkill - kill process
 fkill() {
   ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
-}
-
-cdf() {
-  local file
-    local dir
-    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
 # fbr - checkout git branch
