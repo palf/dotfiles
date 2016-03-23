@@ -91,7 +91,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
 
-set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
 map <C-p> :FZF<CR>
 map <leader>f :FZF<CR>
 map <leader>r :MRU<CR>
@@ -106,7 +106,7 @@ autocmd Filetype ruby setlocal ts=2 sw=2 sts=2
 let g:mustache_abbreviations = 1
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
 let g:syntastic_javascript_checkers = ['eslint']
-let g:airline_extensions = ['branch', 'tabline', 'tmuxline']
+let g:airline_extensions = ['branch', 'tabline']
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 set colorcolumn=140
