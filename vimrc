@@ -115,4 +115,4 @@ set foldmethod=syntax
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
-" hi! link Folded Ignore
+hi! link Folded Ignore
