@@ -19,9 +19,9 @@ function git_prompt_info {
 	fi
 
 	if [[ -n $ref ]]; then
-		echo "${PR_BOLD_GREEN}(${ref#refs/heads/})%{$reset_color%}$gitstatus"
+		echo "${PR_BOLD_GREEN}(${ref#refs/heads/})%{$reset_color%}$gitstatus "
 	fi
 }
 
-PROMPT='$(git_prompt_info) ${PR_BLUE}%(!.#.»)%{$reset_color%} '
+PROMPT='$(git_prompt_info)${PR_BLUE}%(!.#.»)%{$reset_color%} '
 RPROMPT='${PR_BOLD_WHITE}%~%<<%{${reset_color}%}'
