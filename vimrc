@@ -7,12 +7,10 @@ let mapleader=","
 
 set hidden
 set nowrap
-set tabstop=4
 set backspace=indent,eol,start
 set autoindent
 set copyindent
 set number
-set shiftwidth=4
 set shiftround
 set showmatch
 set ignorecase
@@ -34,6 +32,7 @@ set noswapfile
 let g:airline_powerline_fonts = 1
 set background=dark
 colorscheme jellybeans
+let g:jellybeans_use_term_background_color=1
 
 set laststatus=2
 set noshowmode
@@ -43,15 +42,19 @@ set pastetoggle=<F12>
 
 nnoremap ; :
 
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
 nnoremap th :tabfirst<CR>
 nnoremap tj :tabprev<CR>
@@ -62,16 +65,16 @@ nnoremap te :tabedit<Space>
 nnoremap tm :tabmove<Space>
 nnoremap tq :tabclose<CR>
 
-nmap <Tab> :bnext<CR>
-nmap <S-Tab> :bprev<CR>
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprev<CR>
 
 " centering search results
 set scrolloff=5
 nnoremap n nzz
 nnoremap N Nzz
 
-nmap <leader>w :w!<cr>
-nmap <leader>q :q<CR>
+nnoremap <leader>w :w!<cr>
+nnoremap <leader>q :q<CR>
 
 syntax enable
 filetype plugin indent on
@@ -90,29 +93,50 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
+let g:limelight_conceal_ctermfg = 0
 
 set rtp+=~/.fzf
-map <C-p> :FZF<CR>
-map <leader>f :FZF<CR>
-map <leader>r :MRU<CR>
-map <leader>l :Limelight!!<CR>
+noremap <C-p> :FZF<CR>
+noremap <leader>f :FZF<CR>
+noremap <leader>r :MRU<CR>
+noremap <leader>s :SyntasticCheck<CR>
+noremap <leader>l :Limelight!!<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-set ts=4
-set sw=4
-set noexpandtab
+set tabstop=2
+set shiftwidth=2
+set expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 sts=2
 
 let g:mustache_abbreviations = 1
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_haskell_hlint_args = "-c=never"
+let g:syntastic_haskell_checkers = ['hlint']
+let g:syntastic_javascript_checkers = ['standard']
 let g:airline_extensions = ['branch', 'tabline']
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-set colorcolumn=140
+set colorcolumn=80
 set foldmethod=syntax
 
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
+noremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+"Spelling corrections ------------------------ {{{
+iabbrev fucntion function
+iabbrev fuction function
+" }}}
+
+"Vimscript file settings --------------------- {{{
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+"Color overrides ----------------------------- {{{
 hi! link Folded Ignore
+hi link haskellType Type
+" }}}
