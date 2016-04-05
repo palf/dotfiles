@@ -14,3 +14,6 @@ setopt PROMPT_SUBST
 
 unsetopt MENU_COMPLETE
 setopt AUTO_MENU
+setopt histignorealldups
+setopt histignorespace
+setopt histsavenodups
