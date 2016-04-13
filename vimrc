@@ -101,6 +101,7 @@ noremap <leader>f :FZF<CR>
 noremap <leader>r :MRU<CR>
 noremap <leader>s :SyntasticCheck<CR>
 noremap <leader>l :Limelight!!<CR>
+noremap <leader>t :Toc<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 set tabstop=2
@@ -112,7 +113,7 @@ let g:mustache_abbreviations = 1
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
 let g:syntastic_haskell_hlint_args = "-c=never"
 let g:syntastic_haskell_checkers = ['hlint']
-let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:airline_extensions = ['branch', 'tabline']
 let g:airline#extensions#tabline#fnamemod = ':t'
 
