@@ -1,5 +1,4 @@
-# Currently this path is appendend to dynamically when picking a ruby version
-export PATH=node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/local/share/npm/bin:~/.cabal/bin:~/.local/bin:$PATH
+export PATH=node_modules/.bin:~/.cabal/bin:~/.local/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/local/share/npm/bin:$PATH
 
 # Setup terminal, and turn on colors
 export TERM=screen-256color
