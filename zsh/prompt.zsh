@@ -6,7 +6,7 @@ function git_status {
     if [[ ${gitst} =~ "unmerged" ]]; then
       gitstatus="${PR_BOLD_RED}unmerged "
     else
-      gitstatus="${PR_BOLD_GREEN} merged "
+      gitstatus="${PR_BOLD_GREEN}merged "
     fi
   elif [[ ${gitst} =~ "Changes to be committed" ]]; then
     gitstatus="${PR_BOLD_GREEN}! "

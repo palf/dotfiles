@@ -1,4 +1,4 @@
-export PATH=node_modules/.bin:~/.cabal/bin:~/.local/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/local/share/npm/bin:$PATH
+export PATH=node_modules/.bin:~/.cabal/bin:~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/share/npm/bin:$PATH
 
 # Setup terminal, and turn on colors
 export TERM=screen-256color

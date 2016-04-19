@@ -97,11 +97,12 @@ let g:limelight_conceal_ctermfg = 0
 
 set rtp+=~/.fzf
 noremap <C-p> :FZF<CR>
-noremap <leader>f :FZF<CR>
 noremap <leader>r :MRU<CR>
 noremap <leader>s :SyntasticCheck<CR>
 noremap <leader>l :Limelight!!<CR>
 noremap <leader>t :Toc<CR>
+noremap <leader>n :NERDTreeToggle<CR>
+noremap <leader>f :NERDTreeFind<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 set tabstop=2
@@ -128,6 +129,7 @@ noremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> t
 "Spelling corrections ------------------------ {{{
 iabbrev fucntion function
 iabbrev fuction function
+iabbrev reutrn return
 " }}}
 
 "Vimscript file settings --------------------- {{{
