@@ -39,3 +39,9 @@ function docker_burn {
 function docker_burn! {
   for container in $(docker ps -a | grep "ago" | rev | tr -s " " "|" | cut -f 1 -d "|" | rev); do docker rm -f $container; done
 }
+
+function lowercase_extension {
+  find . -name '*.*' -exec sh -c '
+    a=$(echo "$0" | sed -r "s/([^.]*)\$/\L\1/");
+    [ "$a" != "$0" ] && mv "$0" "$a" ' {} \;
+}
