@@ -115,6 +115,7 @@ let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
 let g:syntastic_haskell_hlint_args = "-c=never"
 let g:syntastic_haskell_checkers = ['hlint']
 let g:syntastic_javascript_checkers = ['eslint']
+let g:jsx_ext_required = 0
 let g:airline_extensions = ['branch', 'tabline']
 let g:airline#extensions#tabline#fnamemod = ':t'
 
@@ -143,3 +144,5 @@ augroup END
 hi! link Folded Ignore
 hi link haskellType Type
 " }}}
+
+let g:jsx_ext_required = 0
