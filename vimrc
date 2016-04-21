@@ -97,12 +97,12 @@ let g:limelight_conceal_ctermfg = 0
 
 set rtp+=~/.fzf
 noremap <C-p> :FZF<CR>
+noremap <leader>n :NERDTreeToggle<CR>
+noremap <leader>f :NERDTreeFind<CR>
 noremap <leader>r :MRU<CR>
 noremap <leader>s :SyntasticCheck<CR>
 noremap <leader>l :Limelight!!<CR>
 noremap <leader>t :Toc<CR>
-noremap <leader>n :NERDTreeToggle<CR>
-noremap <leader>f :NERDTreeFind<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 set tabstop=2
