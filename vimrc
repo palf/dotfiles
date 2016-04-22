@@ -29,7 +29,6 @@ set noerrorbells
 set nobackup
 set noswapfile
 
-let g:airline_powerline_fonts = 1
 set background=dark
 colorscheme jellybeans
 let g:jellybeans_use_term_background_color=1
@@ -102,6 +101,7 @@ noremap <leader>f :NERDTreeFind<CR>
 noremap <leader>r :MRU<CR>
 noremap <leader>s :SyntasticCheck<CR>
 noremap <leader>l :Limelight!!<CR>
+noremap <leader>g :Goyo<CR>
 noremap <leader>t :Toc<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
@@ -116,6 +116,9 @@ let g:syntastic_haskell_hlint_args = "-c=never"
 let g:syntastic_haskell_checkers = ['hlint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:jsx_ext_required = 0
+let g:goyo_width = '85%'
+let g:goyo_height = '85%'
+let g:airline_powerline_fonts = 1
 let g:airline_extensions = ['branch', 'tabline']
 let g:airline#extensions#tabline#fnamemod = ':t'
 
