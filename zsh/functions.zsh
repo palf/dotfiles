@@ -32,11 +32,11 @@ function strip_diff_leading_symbols {
 	sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
 }
 
-function docker_burn {
+function docker-burn {
   for container in $(docker ps -a | grep "ago" | rev | tr -s " " "|" | cut -f 1 -d "|" | rev); do docker rm $container; done
 }
 
-function docker_burn! {
+function docker-burn! {
   for container in $(docker ps -a | grep "ago" | rev | tr -s " " "|" | cut -f 1 -d "|" | rev); do docker rm -f $container; done
 }
 
