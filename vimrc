@@ -153,3 +153,5 @@ hi link jsFuncCall Question
 " }}}
 
 let g:jsx_ext_required = 0
+
+set iskeyword+=-
