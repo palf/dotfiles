@@ -12,3 +12,4 @@
 	unstage = reset HEAD --
 	graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(auto)%h%d %s %C(black)%C(bold)%cr'
 	amend = commit --amend --no-edit
+	message = commit --amend
