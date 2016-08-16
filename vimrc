@@ -95,7 +95,7 @@ let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
 let g:limelight_conceal_ctermfg = 0
 
 set rtp+=~/.fzf
-noremap <C-p> :FZF<CR>
+noremap <C-p> :FZF -m<CR>
 noremap <leader>n :NERDTreeToggle<CR>
 noremap <leader>f :NERDTreeFind<CR>
 noremap <leader>r :MRU<CR>
