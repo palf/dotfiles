@@ -120,6 +120,7 @@ let g:goyo_width = '85%'
 let g:goyo_height = '85%'
 let g:airline_powerline_fonts = 1
 let g:airline_extensions = ['branch', 'tabline']
+let g:airline_theme = 'papercolor'
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 set colorcolumn=80
@@ -147,6 +148,8 @@ augroup END
 "Color overrides ----------------------------- {{{
 hi! link Folded Ignore
 hi link haskellType Type
+hi link xmlAttrib htmlSpecialChar
+hi link jsFuncCall Question
 " }}}
 
 let g:jsx_ext_required = 0
