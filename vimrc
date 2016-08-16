@@ -134,6 +134,7 @@ noremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> t
 iabbrev fucntion function
 iabbrev fuction function
 iabbrev reutrn return
+iabbrev retrun return
 " }}}
 
 "Vimscript file settings --------------------- {{{
