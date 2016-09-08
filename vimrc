@@ -29,10 +29,6 @@ set noerrorbells
 set nobackup
 set noswapfile
 
-set background=dark
-colorscheme jellybeans
-let g:jellybeans_use_term_background_color=1
-
 set laststatus=2
 set noshowmode
 set list
@@ -54,6 +50,28 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+nnoremap <up> zk
+nnoremap <down> zj
+nnoremap <left> zc
+nnoremap <right> zo
+
+nnoremap th :tabfirst<CR>
+nnoremap tj :tabprev<CR>
+nnoremap tk :tabnext<CR>
+nnoremap tl :tablast<CR>
+nnoremap tt :tabnew<CR>
+nnoremap te :tabedit<Space>
+nnoremap tm :tabmove<Space>
+nnoremap tq :tabclose<CR>
+
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprev<CR>
+
+" centering search results
+set scrolloff=5
+nnoremap n nzz
+nnoremap N Nzz
 
 nnoremap th :tabfirst<CR>
 nnoremap tj :tabprev<CR>
@@ -146,7 +164,6 @@ augroup END
 " }}}
 
 "Color overrides ----------------------------- {{{
-hi! link Folded Ignore
 hi link haskellType Type
 hi link xmlAttrib htmlSpecialChar
 hi link jsFuncCall Question
@@ -155,3 +172,9 @@ hi link jsFuncCall Question
 let g:jsx_ext_required = 0
 
 set iskeyword+=-
+
+
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
+let g:jellybeans_use_term_background_color=0
