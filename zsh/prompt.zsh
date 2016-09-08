@@ -9,13 +9,13 @@ function git_status {
       gitstatus="${PR_BOLD_GREEN}merged "
     fi
   elif [[ ${gitst} =~ "Changes to be committed" ]]; then
-    gitstatus="${PR_BOLD_GREEN}! "
+    gitstatus="${PR_BOLD_YELLOW}★ "
   elif [[ ${gitst} =~ "use \"git add" ]]; then
-    gitstatus="${PR_BOLD_RED}! "
+    gitstatus="${PR_BOLD_RED}★ "
   elif [[ -n `git checkout HEAD 2> /dev/null | grep ahead` ]]; then
-    gitstatus="${PR_BOLD_YELLOW}* "
+    gitstatus="${PR_BOLD_GREEN}★ "
   else
-    gitstatus=""
+    gitstatus="${PR_BOLD_GREEN}✓ "
   fi
 
   if [[ -n $ref ]]; then
@@ -28,10 +28,10 @@ function git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
 
   if [[ -n $ref ]]; then
-    echo "${PR_BLUE}(${ref#refs/heads/})%{$reset_color%}"
+    echo "${ref#refs/heads/}%{$reset_color%}"
   fi
 }
 
 PROMPT='$(git_status)${PR_BOLD_BLUE}%(!.#.»)%{$reset_color%} '
 # RPROMPT='${PR_WHITE}%~%<<%{${reset_color}%}'
-RPROMPT='$(git_branch)'
+RPROMPT='${PR_BOLD_BLUE}$(git_branch)%{$reset_color%}'
