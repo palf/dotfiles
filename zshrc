@@ -7,6 +7,7 @@ source ~/.zsh/aliases.zsh
 source ~/.zsh/functions.zsh
 source ~/.zsh/fzf_commands.zsh
 source ~/.zsh/history.zsh
+source ~/.zsh/paths.zsh
 
 precmd() {
   if [[ -n "$TMUX" ]]; then
