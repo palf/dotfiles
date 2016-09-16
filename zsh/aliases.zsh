@@ -14,5 +14,3 @@ alias ll='ls -GFhl --color --group'
 alias tree="tree -C"
 alias be="bundle exec"
 alias serve="python -m SimpleHTTPServer"
-
-alias lint_dockerfile="docker run -it --rm -v "$PWD/Dockerfile.test":/Dockerfile:ro redcoolbeans/dockerlint"
