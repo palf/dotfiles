@@ -11,6 +11,6 @@ alias gbr="git branch --remote"
 
 alias ls='ls -GFh --color --group'
 alias ll='ls -GFhl --color --group'
-alias tree="tree -C"
+alias tree="tree -C --dirsfirst"
 alias be="bundle exec"
 alias serve="python -m SimpleHTTPServer"
