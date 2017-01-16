@@ -130,8 +130,8 @@ nnoremap <right> zo
 " }}}
 
 " Buffer movement {{{
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprev<CR>
+" nnoremap <Tab> :bnext<CR>
+" nnoremap <S-Tab> :bprev<CR>
 " }}}
 
 " Tab management {{{
@@ -153,14 +153,16 @@ noremap <C-l> <C-w>l
 " }}}
 
 " Plugin bindings {{{
-noremap <C-p> :FZF -m<CR>
+" nnoremap <silent> <Tab> :FZF -m --reverse<CR>
+noremap <C-p> :FZF -m --reverse<CR>
+noremap <leader>a /\<<C-R><C-W>\><CR>:Ag "\b<C-R><C-W>\b"<CR>
+noremap <leader>t :Tags<CR>
 noremap <leader>n :NERDTreeToggle<CR>
 noremap <leader>f :NERDTreeFind<CR>
 noremap <leader>r :MRU<CR>
 noremap <leader>s :SyntasticCheck<CR>
 noremap <leader>l :Limelight!!<CR>
 noremap <leader>g :Goyo<CR>
-noremap <leader>t :Toc<CR>
 " }}}
 
 " Editor commands {{{
@@ -215,6 +217,36 @@ hi link jsFuncCall Question
 " }}}
 
 " Functions {{{
+
+function! s:tags_sink(line)
+  let parts = split(a:line, '\t\zs')
+  let excmd = matchstr(parts[2:], '^.*\ze;"\t')
+  execute 'silent e' parts[1][:-2]
+  let [magic, &magic] = [&magic, 0]
+  execute excmd
+  let &magic = magic
+endfunction
+
+function! s:tags()
+  if empty(tagfiles())
+    echohl WarningMsg
+    echom 'Preparing tags'
+    echohl None
+    call system('ctags -R')
+  endif
+
+  call fzf#run({
+  \ 'source':  'cat '.join(map(tagfiles(), 'fnamemodify(v:val, ":S")')).
+  \            '| grep -v -a ^!',
+  \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index',
+  \ 'down':    '40%',
+  \ 'sink':    function('s:tags_sink')})
+endfunction
+
+command! Tags call s:tags()
+
+
+
 function! s:buflist()
   redir => ls
   silent ls
@@ -226,10 +258,15 @@ function! s:bufopen(e)
   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
 endfunction
 
-nnoremap <silent> <Leader><Enter> :call fzf#run({
-      \   'source':  reverse(<sid>buflist()),
-      \   'sink':    function('<sid>bufopen'),
-      \   'options': '+m',
-      \   'down':    len(<sid>buflist()) + 2
-      \ })<CR>
+nnoremap <silent> <Tab> :call fzf#run({
+\   'source':  map(range(1, bufnr('$')), 'bufname(v:val)'),
+\   'sink':    'e',
+\   'options': '+m --reverse',
+\   'down':    '40%'
+\ })<CR>
+
+
+
+
+
 " }}}
