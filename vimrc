@@ -245,8 +245,6 @@ endfunction
 
 command! Tags call s:tags()
 
-
-
 function! s:buflist()
   redir => ls
   silent ls
@@ -259,14 +257,10 @@ function! s:bufopen(e)
 endfunction
 
 nnoremap <silent> <Tab> :call fzf#run({
-\   'source':  map(range(1, bufnr('$')), 'bufname(v:val)'),
-\   'sink':    'e',
+\   'source':  <sid>buflist(),
+\   'sink':    function('<sid>bufopen'),
 \   'options': '+m --reverse',
 \   'down':    '40%'
 \ })<CR>
-
-
-
-
 
 " }}}
