@@ -1,5 +1,6 @@
 [core]
 	ignorecase = false
+	excludesfile = ~/.gitignore
 [push]
 	default = matching
 [alias]
