@@ -154,7 +154,7 @@ noremap <C-l> <C-w>l
 
 " Plugin bindings {{{
 " nnoremap <silent> <Tab> :FZF -m --reverse<CR>
-noremap <C-p> :FZF -m --reverse<CR>
+noremap <C-p> :FZF -m --reverse --preview="head -\$LINES {}"<CR>
 noremap <leader>a /\<<C-R><C-W>\><CR>:Ag "\b<C-R><C-W>\b"<CR>
 noremap <leader>t :Tags<CR>
 noremap <leader>n :NERDTreeToggle<CR>
