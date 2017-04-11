@@ -40,7 +40,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-set colorcolumn=80
+set colorcolumn=81
 set foldmethod=syntax
 " }}}
 
@@ -54,7 +54,9 @@ set rtp+=~/.fzf
 " }}}
 
 " Ag {{{
-let g:ackprg = 'ag --nogroup --nocolor --column'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 " }}}
 
 " Syntastic {{{
@@ -79,13 +81,6 @@ highlight GitGutterDelete guibg=red
 highlight GitGutterChangeDelete guibg=yellow
 " }}}
 
-" Airline {{{
-let g:airline_powerline_fonts = 1
-let g:airline_extensions = ['branch', 'tabline']
-let g:airline_theme = 'papercolor'
-let g:airline#extensions#tabline#fnamemod = ':t'
-" }}}
-
 " Limelight {{{
 let g:limelight_conceal_ctermfg = 0
 " }}}
@@ -102,10 +97,16 @@ let g:jsx_ext_required = 0
 " Mustache {{{
 let g:mustache_abbreviations = 1
 " }}}
+
+" GHC-Mod {{{
+nnoremap <silent> tw :GhcModTypeInsert<CR>
+nnoremap <silent> ts :GhcModSplitFunCase<CR>
+nnoremap <silent> tq :GhcModType<CR>
+nnoremap <silent> te :GhcModTypeClear<CR>
+" }}}
 " }}}
 
 " Key Bindings {{{
-nnoremap ; :
 
 " Center search results {{{
 set scrolloff=5
@@ -114,10 +115,6 @@ nnoremap N Nzz
 " }}}
 
 " Cursor behaviour {{{
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
@@ -127,22 +124,11 @@ nnoremap <up> zk
 nnoremap <down> zj
 nnoremap <left> zc
 nnoremap <right> zo
-" }}}
 
-" Buffer movement {{{
-" nnoremap <Tab> :bnext<CR>
-" nnoremap <S-Tab> :bprev<CR>
-" }}}
-
-" Tab management {{{
-nnoremap th :tabfirst<CR>
-nnoremap tj :tabprev<CR>
-nnoremap tk :tabnext<CR>
-nnoremap tl :tablast<CR>
-nnoremap tt :tabnew<CR>
-nnoremap te :tabedit<Space>
-nnoremap tm :tabmove<Space>
-nnoremap tq :tabclose<CR>
+nnoremap <C-h> :tabprev<CR>
+nnoremap <C-j> :bprev<CR>
+nnoremap <C-k> :bnext<CR>
+nnoremap <C-l> :tabnext<CR>
 " }}}
 
 " Window movement {{{
@@ -153,9 +139,8 @@ noremap <C-l> <C-w>l
 " }}}
 
 " Plugin bindings {{{
-" nnoremap <silent> <Tab> :FZF -m --reverse<CR>
 noremap <C-p> :FZF -m --reverse --preview="head -\$LINES {}"<CR>
-noremap <leader>a /\<<C-R><C-W>\><CR>:Ag "\b<C-R><C-W>\b"<CR>
+noremap <leader>a /\<<C-R><C-W>\><CR>:Ack "\b<C-R><C-W>\b"<CR>
 noremap <leader>t :Tags<CR>
 noremap <leader>n :NERDTreeToggle<CR>
 noremap <leader>f :NERDTreeFind<CR>
