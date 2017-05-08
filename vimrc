@@ -10,6 +10,7 @@ set hidden
 set nowrap
 set backspace=indent,eol,start
 set autoindent
+set relativenumber
 set copyindent
 set number
 set shiftround
@@ -66,7 +67,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
 let g:syntastic_haskell_hlint_args = "-c=never"
-let g:syntastic_haskell_checkers = ['hlint']
+let g:syntastic_haskell_checkers = ['hlint', 'ghc-mod']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_mode_map = { 'mode': 'passive' }
 " }}}
@@ -82,7 +83,7 @@ highlight GitGutterChangeDelete guibg=yellow
 " }}}
 
 " Limelight {{{
-let g:limelight_conceal_ctermfg = 0
+" let g:limelight_conceal_ctermfg = 0
 " }}}
 
 " Goyo {{{
@@ -96,6 +97,42 @@ let g:jsx_ext_required = 0
 
 " Mustache {{{
 let g:mustache_abbreviations = 1
+" }}}
+
+" Tagbar {{{
+let g:tagbar_type_haskell = {
+    \ 'ctagsbin'  : 'hasktags',
+    \ 'ctagsargs' : '-x -c -o-',
+    \ 'kinds'     : [
+        \  'm:modules:0:1',
+        \  'd:data: 0:1',
+        \  'd_gadt: data gadt:0:1',
+        \  't:type names:0:1',
+        \  'nt:new types:0:1',
+        \  'c:classes:0:1',
+        \  'cons:constructors:1:1',
+        \  'c_gadt:constructor gadt:1:1',
+        \  'c_a:constructor accessors:1:1',
+        \  'ft:function types:1:1',
+        \  'fi:function implementations:0:1',
+        \  'o:others:0:1'
+    \ ],
+    \ 'sro'        : '.',
+    \ 'kind2scope' : {
+        \ 'm' : 'module',
+        \ 'c' : 'class',
+        \ 'd' : 'data',
+        \ 't' : 'type'
+    \ },
+    \ 'scope2kind' : {
+        \ 'module' : 'm',
+        \ 'class'  : 'c',
+        \ 'data'   : 'd',
+        \ 'type'   : 't'
+    \ }
+\ }
+
+nmap <F8> :TagbarToggle<CR>
 " }}}
 
 " GHC-Mod {{{
@@ -190,15 +227,14 @@ autocmd Filetype ruby setlocal ts=2 sw=2 sts=2
 " }}}
 " }}}
 
-" Colorscheme {{{
+" Color scheme {{{
 let g:solarized_termcolors=256
-set background=dark
-colorscheme jellybeans
 let g:jellybeans_use_term_background_color=0
+let g:seoul256_background = 234
+let g:seoul256_srgb = 1
 
-hi link haskellType Type
-hi link xmlAttrib htmlSpecialChar
-hi link jsFuncCall Question
+set background=dark
+colorscheme seoul256
 " }}}
 
 " Functions {{{
