@@ -8,6 +8,7 @@ source ~/.zsh/functions.zsh
 source ~/.zsh/fzf_commands.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/paths.zsh
+source ~/.zsh/line_editing.zsh
 
 precmd() {
   if [[ -n "$TMUX" ]]; then
@@ -22,3 +23,7 @@ autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 eval "$(stack --bash-completion-script stack)"
 
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+bindkey ^] edit-command-line
