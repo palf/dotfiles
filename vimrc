@@ -284,4 +284,4 @@ nnoremap <silent> <Tab> :call fzf#run({
 \   'down':    '40%'
 \ })<CR>
 
-" }}}
+autocmd BufWritePre * %s/\s\+$//e
