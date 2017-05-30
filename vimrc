@@ -176,8 +176,11 @@ noremap <C-l> <C-w>l
 " }}}
 
 " Plugin bindings {{{
-noremap <C-p> :FZF -m --reverse --preview="head -\$LINES {}"<CR>
-noremap <leader>a /\<<C-R><C-W>\><CR>:Ack "\b<C-R><C-W>\b"<CR>
+nnoremap <silent> <Tab> :Buffers<CR>
+noremap <C-p> :Files<CR>
+" noremap <leader>a /\<<C-R><C-W>\><CR>:Ack "\b<C-R><C-W>\b"<CR>
+nnoremap <leader>a :call fzf#vim#ag(expand('<cword>'), {'options': '--exact --select-1 '})<CR>
+nnoremap <leader>d :call fzf#vim#tags(expand('<cword>') . " ", {'options': '--exact --select-1 --exit-0'})<CR>
 noremap <leader>t :Tags<CR>
 noremap <leader>n :NERDTreeToggle<CR>
 noremap <leader>f :NERDTreeFind<CR>
@@ -238,50 +241,5 @@ colorscheme seoul256
 " }}}
 
 " Functions {{{
-
-function! s:tags_sink(line)
-  let parts = split(a:line, '\t\zs')
-  let excmd = matchstr(parts[2:], '^.*\ze;"\t')
-  execute 'silent e' parts[1][:-2]
-  let [magic, &magic] = [&magic, 0]
-  execute excmd
-  let &magic = magic
-endfunction
-
-function! s:tags()
-  if empty(tagfiles())
-    echohl WarningMsg
-    echom 'Preparing tags'
-    echohl None
-    call system('ctags -R')
-  endif
-
-  call fzf#run({
-  \ 'source':  'cat '.join(map(tagfiles(), 'fnamemodify(v:val, ":S")')).
-  \            '| grep -v -a ^!',
-  \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index',
-  \ 'down':    '40%',
-  \ 'sink':    function('s:tags_sink')})
-endfunction
-
-command! Tags call s:tags()
-
-function! s:buflist()
-  redir => ls
-  silent ls
-  redir END
-  return split(ls, '\n')
-endfunction
-
-function! s:bufopen(e)
-  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-endfunction
-
-nnoremap <silent> <Tab> :call fzf#run({
-\   'source':  <sid>buflist(),
-\   'sink':    function('<sid>bufopen'),
-\   'options': '+m --reverse',
-\   'down':    '40%'
-\ })<CR>
 
 autocmd BufWritePre * %s/\s\+$//e
