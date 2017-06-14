@@ -67,7 +67,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
 let g:syntastic_haskell_hlint_args = "-c=never"
-let g:syntastic_haskell_checkers = ['hlint', 'ghc-mod']
+let g:syntastic_haskell_checkers = ['hlint', 'hdevtools', 'ghc-mod']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_mode_map = { 'mode': 'passive' }
 " }}}
@@ -243,3 +243,17 @@ colorscheme seoul256
 " Functions {{{
 
 autocmd BufWritePre * %s/\s\+$//e
+
+
+
+
+function! ToggleConcealQualified()
+  if (matchdelete(99) == -1)
+    call matchadd('Conceal', '\(qualified\|import\|as\)\@<![^a-zA-Z0-9\.]\zs\([A-Z]\w*\.\)\+', 100, 99)
+  endif
+endfunction
+
+nnoremap <silent> <leader>cc :silent! call ToggleConcealQualified()<cr>
+
+autocmd! InsertEnter * :set conceallevel=0
+autocmd! InsertLeave * :set conceallevel=2
