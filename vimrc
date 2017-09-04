@@ -50,17 +50,15 @@ syntax enable
 filetype plugin indent on
 autocmd StdinReadPre * let s:std_in=1
 
-" FZF {{{
+" FZF
 set rtp+=~/.fzf
-" }}}
 
-" Ag {{{
+" Ag
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-" }}}
 
-" Syntastic {{{
+" Syntastic
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
@@ -70,9 +68,8 @@ let g:syntastic_haskell_hlint_args = "-c=never"
 let g:syntastic_haskell_checkers = ['hlint', 'hdevtools', 'ghc-mod']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_mode_map = { 'mode': 'passive' }
-" }}}
 
-" Git gutter {{{
+" Git gutter
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_highlight_lines = 0
 highlight clear SignColumn
@@ -80,26 +77,21 @@ highlight GitGutterAdd guibg=green
 highlight GitGutterChange guibg=yellow
 highlight GitGutterDelete guibg=red
 highlight GitGutterChangeDelete guibg=yellow
-" }}}
 
-" Limelight {{{
+" Limelight
 " let g:limelight_conceal_ctermfg = 0
-" }}}
 
-" Goyo {{{
+" Goyo
 let g:goyo_width = '85%'
 let g:goyo_height = '85%'
-" }}}
 
-" JavaScript {{{
+" JavaScript
 let g:jsx_ext_required = 0
-" }}}
 
-" Mustache {{{
+" Mustache
 let g:mustache_abbreviations = 1
-" }}}
 
-" Tagbar {{{
+" Tagbar
 let g:tagbar_type_haskell = {
     \ 'ctagsbin'  : 'hasktags',
     \ 'ctagsargs' : '-x -c -o-',
@@ -133,25 +125,22 @@ let g:tagbar_type_haskell = {
 \ }
 
 nmap <F8> :TagbarToggle<CR>
-" }}}
 
-" GHC-Mod {{{
+" GHC-Mod
 nnoremap <silent> tw :GhcModTypeInsert<CR>
 nnoremap <silent> ts :GhcModSplitFunCase<CR>
 nnoremap <silent> tq :GhcModType<CR>
 nnoremap <silent> te :GhcModTypeClear<CR>
 " }}}
-" }}}
 
 " Key Bindings {{{
 
-" Center search results {{{
+" Center search results
 set scrolloff=5
 nnoremap n nzz
 nnoremap N Nzz
-" }}}
 
-" Cursor behaviour {{{
+" Cursor behaviour
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
@@ -166,43 +155,40 @@ nnoremap <C-h> :tabprev<CR>
 nnoremap <C-j> :bprev<CR>
 nnoremap <C-k> :bnext<CR>
 nnoremap <C-l> :tabnext<CR>
-" }}}
 
-" Window movement {{{
+" Window movement
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-" }}}
 
-" Plugin bindings {{{
+" Plugin bindings
 nnoremap <silent> <Tab> :Buffers<CR>
-noremap <C-p> :Files<CR>
-" noremap <leader>a /\<<C-R><C-W>\><CR>:Ack "\b<C-R><C-W>\b"<CR>
+nnoremap <silent> <C-p> :Files<CR>
+" noremap <silent> <C-p> :FZF --reverse<CR>
 nnoremap <leader>a :call fzf#vim#ag(expand('<cword>'), {'options': '--exact --select-1 '})<CR>
 nnoremap <leader>d :call fzf#vim#tags(expand('<cword>') . " ", {'options': '--exact --select-1 --exit-0'})<CR>
-noremap <leader>t :Tags<CR>
-noremap <leader>n :NERDTreeToggle<CR>
-noremap <leader>f :NERDTreeFind<CR>
-noremap <leader>r :MRU<CR>
-noremap <leader>s :SyntasticCheck<CR>
-noremap <leader>l :Limelight!!<CR>
-noremap <leader>g :Goyo<CR>
-" }}}
+nnoremap <leader>f :NERDTreeFind<CR>
 
-" Editor commands {{{
+nnoremap <leader>g :Goyo<CR>
+nnoremap <leader>l :Limelight!!<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>r :MRU<CR>
+nnoremap <leader>s :SyntasticCheck<CR>
+nnoremap <leader>t :Tags<CR>
+
+nnoremap <silent> <leader>cc :silent! call ToggleConcealQualified()<cr>
+
+" Editor commands
 nnoremap <leader>w :w!<cr>
 nnoremap <leader>q :q<CR>
-" }}}
 
-" {{{ Folds
+" Folds
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
-" }}}
 
-" Display highlight group {{{
+" Display highlight group
 noremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-" }}}
 " }}}
 
 " Spelling corrections {{{
@@ -218,16 +204,14 @@ iabbrev Moand Monad
 " }}}
 
 " Filetype overrides {{{
-" Vimscript {{{
+" Vimscript
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
-" }}}
 
-" Ruby {{{
+" Ruby
 autocmd Filetype ruby setlocal ts=2 sw=2 sts=2
-" }}}
 " }}}
 
 " Color scheme {{{
@@ -244,16 +228,13 @@ colorscheme seoul256
 
 autocmd BufWritePre * %s/\s\+$//e
 
-
-
-
 function! ToggleConcealQualified()
   if (matchdelete(99) == -1)
     call matchadd('Conceal', '\(qualified\|import\|as\)\@<![^a-zA-Z0-9\.]\zs\([A-Z]\w*\.\)\+', 100, 99)
   endif
 endfunction
 
-nnoremap <silent> <leader>cc :silent! call ToggleConcealQualified()<cr>
+" }}}
 
-autocmd! InsertEnter * :set conceallevel=0
-autocmd! InsertLeave * :set conceallevel=2
+" autocmd! InsertEnter * :set conceallevel=0
+" autocmd! InsertLeave * :set conceallevel=2
