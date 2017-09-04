@@ -1,15 +1,17 @@
 [core]
-	ignorecase = false
-	excludesfile = ~/.gitignore
+  ignorecase = false
+  excludesfile = ~/.gitignore
 [push]
-	default = matching
+  default = matching
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	who = shortlog -s --
-	last = log -1 HEAD
-	unstage = reset HEAD --
-	graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(auto)%h%d %s %C(black)%C(bold)%cr'
-	amend = commit --amend --no-edit
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  who = shortlog -s --
+  last = log -1 HEAD
+  unstage = reset HEAD --
+  graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(auto)%h%d %s %C(black)%C(bold)%cr'
+  amend = commit --amend --no-edit
+[credential]
+  helper = cache
