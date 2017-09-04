@@ -32,15 +32,14 @@ fco() {
     git checkout $(echo "$commit" | sed "s/ .*//")
 }
 
+# fshow - git commit browser
 fshow() {
-  local out sha q
-  while out=$(
-    git log --graph --color=always \
+  git log --graph --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-    fzf --ansi --multi --no-sort --reverse --query="$q" --print-query); do
-    q=$(head -1 <<< "$out")
-    while read sha; do
-      git show --color=always $sha | less -R
-    done < <(sed '1d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
-  done
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --header "Press CTRL-S to toggle sort" \
+      --preview "echo {} | grep -o '[a-f0-9]\{7\}' | head -1 |
+                 xargs -I % sh -c 'git show --color=always % | head -$LINES'" \
+      --bind "enter:execute:echo {} | grep -o '[a-f0-9]\{7\}' | head -1 |
+              xargs -I % sh -c 'vim fugitive://\$(git rev-parse --show-toplevel)/.git//% < /dev/tty'"
 }
