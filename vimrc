@@ -222,6 +222,8 @@ let g:seoul256_srgb = 1
 
 set background=dark
 colorscheme seoul256
+
+hi hs_declareFunction ctermfg=red
 " }}}
 
 " Functions {{{
@@ -238,3 +240,4 @@ endfunction
 
 " autocmd! InsertEnter * :set conceallevel=0
 " autocmd! InsertLeave * :set conceallevel=2
+set conceallevel=1
