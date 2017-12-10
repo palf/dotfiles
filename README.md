@@ -9,3 +9,8 @@ done
 
 rm ~/.README.md
 ```
+
+## Notes
+
+- Terminal themes from https://github.com/Mayccoll/Gogh (ACI)
+- Hack font from http://sourcefoundry.org/hack/
