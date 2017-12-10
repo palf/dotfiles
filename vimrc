@@ -151,11 +151,6 @@ nnoremap <down> zj
 nnoremap <left> zc
 nnoremap <right> zo
 
-nnoremap <C-h> :tabprev<CR>
-nnoremap <C-j> :bprev<CR>
-nnoremap <C-k> :bnext<CR>
-nnoremap <C-l> :tabnext<CR>
-
 " Window movement
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
