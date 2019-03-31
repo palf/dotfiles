@@ -10,7 +10,6 @@ set hidden
 set nowrap
 set backspace=indent,eol,start
 set autoindent
-set relativenumber
 set copyindent
 set number
 set shiftround
@@ -70,7 +69,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_mode_map = { 'mode': 'passive' }
 
 " Git gutter
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 let g:gitgutter_highlight_lines = 0
 highlight clear SignColumn
 highlight GitGutterAdd guibg=green
@@ -158,7 +157,7 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
 " Plugin bindings
-nnoremap <silent> <Tab> :Buffers<CR>
+nnoremap <silent> <C-b> :Buffers<CR>
 nnoremap <silent> <C-p> :Files<CR>
 " noremap <silent> <C-p> :FZF --reverse<CR>
 nnoremap <leader>a :call fzf#vim#ag(expand('<cword>'), {'options': '--exact --select-1 '})<CR>
@@ -236,3 +235,4 @@ endfunction
 " autocmd! InsertEnter * :set conceallevel=0
 " autocmd! InsertLeave * :set conceallevel=2
 set conceallevel=1
+
