@@ -58,4 +58,4 @@ else
     start_agent;
 fi
 
-
+eval "$(stack --bash-completion-script stack)"
