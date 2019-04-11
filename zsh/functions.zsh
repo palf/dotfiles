@@ -56,3 +56,10 @@ function lowercase_extension {
     a=$(echo "$0" | sed -r "s/([^.]*)\$/\L\1/");
     [ "$a" != "$0" ] && mv "$0" "$a" ' {} \;
 }
+
+function format-json {
+  file=$(mktemp)
+  jq -S "." $1 > $file
+  mv $file $1
+}
+
